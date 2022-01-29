@@ -57,7 +57,7 @@ for i in list :
     for i in result : all_result.append(i)
 df = pd.DataFrame(all_result)
 df = pd.melt(df, id_vars='_id', value_vars=['avgrt', 'avglike'])
-
+print(df)
 plt.figure(figsize=[16,10])
 g = sns.catplot(
     data=df, kind="bar",
@@ -67,6 +67,7 @@ g = sns.catplot(
 g.despine(left=True)
 g.set_axis_labels("", "total")
 g.legend.set_title("")
+
 plt.show()
 
 
