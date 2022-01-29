@@ -1,0 +1,27 @@
+body{
+    background-image: url('../paris.jpg');
+    font-family: cursive;
+
+}
+
+.header{
+    color:rgb(239, 239, 240);
+    position: relative;
+}
+
+.container{
+    position: relative;
+    top:40px;
+}
+
+.jumbotron{
+    background-color: rgb(127, 149, 168);
+    position: relative;
+    top:70px;
+    opacity: 0.90;
+
+}
+
+.new{
+    border-top: 7px solid black;
+}

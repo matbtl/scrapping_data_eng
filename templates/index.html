@@ -1,12 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twitter scrapping</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/index.css') }}">
+    <title>Twitter Scrapping</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <h1 class="header text-center display-4">Twitter Scrapping présidentielles 2022</h1>
+        <!-- <h1 class="border border-danger d-inline">HELLO</h1> -->
+        <!-- <span class="border border-success d-block">HELLO</span> -->
+        <!-- <h1 class="d-xl-none">HIDE ME ON XL</h1> -->
+        <!-- <h1 class="d-none d-lg-block d-xl-none">ALWAYS HIDDEN EXCEPT LG</h1> -->
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Bienvenue sur notre application web!</h1>
+            <p class="lead d-none d-md-block">L'objectif étant de scrapper des données twitter dans le but d'analyser la pertinence des potentiels candidats aux présidentielles 2022 en France.</p>
+            <hr class="new">
+            <p>L'application dispose de plusieurs fonctionnalités, telles que l'analyse des likes et des retweet des candidats, l'analyse de sentiments, ou la recherche de twee d'hashtag. Nous vous propons de les découvrirs ci-dessous.</p>
+            <a class="btn btn-primary btn-lg redbutton" href="#" role="button">Retweets et likes</a>
+            <a class="btn btn-light btn-lg redbutton" href="#" role="button">Hashtags</a>
+            <a class="btn btn-danger btn-lg redbutton" href="#" role="button">Sentiments</a>
+            
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
