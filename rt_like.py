@@ -6,20 +6,14 @@ import pymongo
 from pymongo import MongoClient
 import seaborn as sns
 import matplotlib.pyplot as plt
-from twitter_credentials import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET
-import io
-from flask import Response
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-from flask import Flask
 
 def plot_rt():
     plt.style.use('ggplot')
 
-    consumer_key =CONSUMER_KEY
-    consumer_secret =CONSUMER_SECRET
-    access_token =ACCESS_TOKEN
-    access_token_secret  =ACCESS_TOKEN_SECRET
+    consumer_key ="O3tWUg2VwSo1YEeGYzNtd3fZw"
+    consumer_secret ="aN1WgHgaIFxxNI9dULaO59gVVBhngoAP6lSn0oLTwWjNxMlyXi"
+    access_token ="1486708069102936065-8bToI65WDWwErxQIlbTznyTuCSe96p"
+    access_token_secret  ="roRW8CgJObee3WkQpPYiFdgZBgBmslsXxqZMD8tpu34TC"
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -76,9 +70,14 @@ def plot_rt():
     g.set_axis_labels("", "total")
     g.legend.set_title("")
 
-    bytes_image = io.BytesIO()
-    plt.savefig(bytes_image, format='png')
-    bytes_image.seek(0)
-    return bytes_image
+    g.savefig("static/rt_like.jpg")
 
+
+
+
+
+# for x in all_result :
+#     print('---------------------------------')
+#     print(x)
+#     print('---------------------------------')
 

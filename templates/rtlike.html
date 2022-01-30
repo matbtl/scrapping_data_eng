@@ -7,6 +7,7 @@
     <title>Twitter Scrapping</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/rtlike.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav id="navbar" class="">
@@ -19,7 +20,7 @@
       
           <!-- Navbar Links -->
           <ul id="menu">
-            <li><a href="#home">Acceuil</a></li><!--
+            <li><a href="/">Acceuil</a></li><!--
          --><li><a href="#services">Retweets</a></li><!--
          --><li><a href="#about">Hashtags</a></li><!--
          --><li><a href="#contact">Sentiments</a></li>
@@ -37,7 +38,7 @@
       
       <div class="overlay-menu">
         <ul id="menu">
-            <li><a href="#home">Acceuil</a></li>
+            <li><a href="/templates/index.html">Accueil</a></li>
             <li><a href="#services">Retweets</a></li>
             <li><a href="#about">Hashtags</a></li>
             <li><a href="#contact">Sentiments</a></li>
@@ -87,12 +88,10 @@
         <br>
         <br>
 
-        <img src="http://localhost:5000/plot_rt_like" />
-
-        html.Iframe(id='map', srcDoc=open('map.html', 'r').read(), width='80%', height='600', style={'margin-left': '10%', 'margin-right': '10%', "border":{"width":"10px", "color":"#2c418e"},'border-radius':'8%'})
+        <img src="/static/rt_like.jpg" alt="">
     </div>
     
 </body>
-    <script src="{{url_for('static', filename='scripts/navbar.js')}}"></script>
+
 
 </html>

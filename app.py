@@ -1,26 +1,29 @@
 from flask import Flask, redirect, url_for, render_template, send_file
+from sympy import plot
 from rt_like import plot_rt
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+import io
+from flask import Response
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
+plot_rt()
+ 
+
 
 @app.route('/')
 def todo():
+    
     return render_template('index.html')
 
 
 
 
-def plot_rt_like():
-    bytes_obj = plot_rt()
-    
-    return send_file(bytes_obj,
-                     attachment_filename='plot.png',
-                     mimetype='image/png')
 
 
 @app.route('/rtlike', methods=['GET', 'POST'])
 def rtlike():
-    plot_rt_like()
     return render_template('rtlike.html')
 
 
