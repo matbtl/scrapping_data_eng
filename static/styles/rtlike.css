@@ -23,7 +23,7 @@
     ======================================================*/
   #navbar {
     background: white;
-    color: rgb(13, 26, 38);
+    color: rgb(255, 255, 255);
     position: fixed;
     top: 0;
     height: 60px;
@@ -84,7 +84,7 @@
   }
   
   #navbar li a {
-    color: rgb(13, 26, 38);
+    color: rgb(246, 247, 248);
     display: block;
     font-size: 0.7em;
     height: 50px;
@@ -317,7 +317,15 @@
   
   .overlay-menu li a:hover,
   .overlay-menu li a:active {
-    color: rgb(28, 121, 184);
+    color: rgb(255, 255, 255);
     -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
   }
+
+#navbar {
+  background-color: black;
+}
+
+.nav-item {
+  color: white;
+}

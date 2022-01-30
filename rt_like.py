@@ -59,8 +59,7 @@ def plot_rt():
         for i in result : all_result.append(i)
     df = pd.DataFrame(all_result)
     df = pd.melt(df, id_vars='_id', value_vars=['avgrt', 'avglike'])
-    print(df)
-    plt.figure(figsize=[16,10])
+    plt.figure(figsize=[12,4] , dpi = 100 )
     g = sns.catplot(
         data=df, kind="bar",
         x="_id", y="value", hue="variable",

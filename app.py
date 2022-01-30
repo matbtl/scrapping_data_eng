@@ -8,7 +8,7 @@ from flask import Response
 import matplotlib.pyplot as plt
 
 app = Flask(__name__)
-plot_rt()
+# plot_rt()
  
 
 
@@ -26,8 +26,12 @@ def todo():
 def rtlike():
     return render_template('rtlike.html')
 
+@app.route('/hashtags', methods=['GET', 'POST'])
+def hashtags():
+    return render_template('hashtags.html')
 
-@app.route('/sentiment', methods=['GET', 'POST'])
+
+@app.route('/sentiments', methods=['GET', 'POST'])
 def sentiment():
     return render_template('sentiment.html')
 
