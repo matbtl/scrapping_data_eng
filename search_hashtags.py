@@ -16,18 +16,18 @@ def hashtags(word,nofTwit):
         words= word
 
 
-        def printtweetdata(n, final_db):
-                print()
-                print(f"Tweet {n}:")
-                print(f"Username:{final_db[0]}")
-                print(f"Description:{final_db[1]}")
-                print(f"Location:{final_db[2]}")
-                print(f"Following Count:{final_db[3]}")
-                print(f"Follower Count:{final_db[4]}")
-                print(f"Total Tweets:{final_db[5]}")
-                print(f"Retweet Count:{final_db[6]}")
-                print(f"Tweet Text:{final_db[7]}")
-                print(f"Hashtags Used:{final_db[8]}")
+        # def printtweetdata(n, final_db):
+        #         print()
+        #         print(f"Tweet {n}:")
+        #         print(f"Username:{final_db[0]}")
+        #         print(f"Description:{final_db[1]}")
+        #         print(f"Location:{final_db[2]}")
+        #         print(f"Following Count:{final_db[3]}")
+        #         print(f"Follower Count:{final_db[4]}")
+        #         print(f"Total Tweets:{final_db[5]}")
+        #         print(f"Retweet Count:{final_db[6]}")
+        #         print(f"Tweet Text:{final_db[7]}")
+        #         print(f"Hashtags Used:{final_db[8]}")
 
 
         db = pd.DataFrame(columns=['username','description',
@@ -66,13 +66,25 @@ def hashtags(word,nofTwit):
                                 followers, totaltweets,
                                 retweetcount, text, hashtext]
                         
-
-
                         db.loc[len(db)] = ith_tweet
+                        
+        return db.sort_values(by=['retweetcount'], ascending=False).head(10)
 
-                        printtweetdata(i, ith_tweet)
-                        i = i+1
-        final_db = ith_tweet.sort_values(by=['retweetcount'], ascending=False).head(10)
+db = hashtags('Macron2022',30)
+
+
+
+print(db)
+# for i in final_db.iterrows():
+#         print('-----------------------------------------------------------')
+#         print(i)
+#         print('-----------------------------------------------------------')
+
+
+
+
+
+
         
 
 

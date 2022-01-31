@@ -1,13 +1,13 @@
-Introduction 
+#Introduction 
 
 Notre application porte sur le sujet des présidentielles 2022 et nous avons utilisé le site Twitter pour notre étude. Nous avons analysé les tweets des principaux candidats (likes et retweet), mais aussi les principaux sujets que l’on retrouve chez les utilisateurs de twitter et le sentiment que l’on perçoit dans un twitter (positif, négatif, neutre).
 
-Lancement du projet :
+#Lancement du projet :
 
 Word Cloud
 
 
-Scrapping de donnée :
+#Scrapping de donnée :
 
 Nous avons implémenté plusieurs fonctionnalité via l’api Tweepy de twitter :
 
@@ -16,13 +16,13 @@ Nous avons implémenté plusieurs fonctionnalité via l’api Tweepy de twitter 
 -Une analyse de la moyenne de likes et de rt des principaux candidats (liste fixée par rapport au dernier sondage à la présidentielle). L’analyse est fixé sur les 100 derniers tweets mais ce paramètre peut être changé
 -une recherche des tweets les plus populaires suivant un hashtags
 
-librairies utilisées :
+#librairies utilisées :
 
 
 
 
 
-Fichiers principaux : 
+#Fichiers principaux : 
 
 app.py : Application flask où l’on donne les routes pour nos templates 
 
@@ -30,9 +30,11 @@ rt_like.py : analyse les 100 tweets des principaux candidats aux élections pré
 
 sentiment.py : donne le sentiment d’une liste de tweet en donnant un hashtag, donne aussi un nuage de mots qui sont le plus représenté dans les tweet.
 
-Templates : regroupe tous les templates du site.
+search_hashtags.py: 
 
-User Guide : 
+Le dossier templates : regroupe tous les templates du site.
+
+#User Guide : 
 
 Notre site est réparti en 4 pages html : 
 
