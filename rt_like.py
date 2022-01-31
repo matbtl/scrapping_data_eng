@@ -1,19 +1,14 @@
 import tweepy
 import pandas as pd
-import re
-import json
-import pymongo
 from pymongo import MongoClient
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 def plot_rt():
+    from twitter_credentials import consumer_key, consumer_secret, access_token, access_token_secret
+
     plt.style.use('ggplot')
 
-    consumer_key ="O3tWUg2VwSo1YEeGYzNtd3fZw"
-    consumer_secret ="aN1WgHgaIFxxNI9dULaO59gVVBhngoAP6lSn0oLTwWjNxMlyXi"
-    access_token ="1486708069102936065-8bToI65WDWwErxQIlbTznyTuCSe96p"
-    access_token_secret  ="roRW8CgJObee3WkQpPYiFdgZBgBmslsXxqZMD8tpu34TC"
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -72,10 +67,4 @@ def plot_rt():
     g.savefig("static/rt_like.jpg")
 
 
-
-# plot_rt()
-# for x in all_result :
-#     print('---------------------------------')
-#     print(x)
-#     print('---------------------------------')
 

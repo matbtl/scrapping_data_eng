@@ -1,40 +1,17 @@
-from flask import Flask, redirect, url_for, render_template, send_file, request
-from sympy import plot
+from flask import Flask, redirect, url_for, render_template, request
 from rt_like import plot_rt
 from search_hashtags import hashtags_df
 from sentiment import plot_sent
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-import io
-from flask import Response
-import matplotlib.pyplot as plt
-from wtforms import Form, BooleanField, StringField, PasswordField, validators
-
-
-# class RegistrationForm(Form):
-#     username = StringField('Username', [validators.Length(min=4, max=25)])
-#     email = StringField('Email Address', [validators.Length(min=6, max=35)])
-#     password = PasswordField('New Password', [
-#         validators.DataRequired(),
-#         validators.EqualTo('confirm', message='Passwords must match')
-#     ])
-#     confirm = PasswordField('Repeat Password')
-#     accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
 
 
 app = Flask(__name__)
 plot_rt()
-# plot_sent()
 
 
 
 @app.route('/')
 def todo():
-    
     return render_template('index.html')
-
-
-
 
 
 
@@ -74,6 +51,3 @@ if __name__ == "__main__":
     
 
 
-# @app.route('/new', methods=['POST'])
-# def new():
-#     return redirect(url_for('todo'))

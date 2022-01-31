@@ -1,35 +1,21 @@
-from textblob import TextBlob
-import sys
 import tweepy
-import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
-import os
 import nltk
-import pycountry
 import plotly.express as px
 import re
-import string
 from IPython.display import display
-import textblob_fr
 from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
 from PIL import Image
-tb = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
+
 
 from wordcloud import WordCloud
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from langdetect import detect
-from nltk.stem import SnowballStemmer
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from sklearn.feature_extraction.text import CountVectorizer
 
 def plot_sent(key_word,nbTweet):
+    tb = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
     nltk.download('vader_lexicon')
-    consumer_key ="O3tWUg2VwSo1YEeGYzNtd3fZw"
-    consumer_secret ="aN1WgHgaIFxxNI9dULaO59gVVBhngoAP6lSn0oLTwWjNxMlyXi"
-    access_token ="1486708069102936065-8bToI65WDWwErxQIlbTznyTuCSe96p"
-    access_token_secret  ="roRW8CgJObee3WkQpPYiFdgZBgBmslsXxqZMD8tpu34TC"
+    from twitter_credentials import consumer_key, consumer_secret, access_token, access_token_secret
+
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -211,32 +197,26 @@ def plot_sent(key_word,nbTweet):
     df["sentiment"]=senti_list
     print(df)
 
-    #plot
     Number_sentiment= df.groupby(["sentiment"])['text'].count().reset_index().reset_index(drop=True)
     fig = px.histogram(df, x="sentiment",color="sentiment")
     fig.update_layout(
-        title_text='Sentiment of reviews', # title of plot
-        xaxis_title_text='Sentiment', # xaxis label
-        yaxis_title_text='Count', # yaxis label
+        title_text='Sentiment of reviews', 
+        xaxis_title_text='Sentiment', 
+        yaxis_title_text='Count', 
         bargap=0.2, 
         bargroupgap=0.1
     )
     fig.write_image(file='static/barplot.jpg', format='jpg')
-
-    # fig.show()
 
 
 
     fig2 = px.pie(Number_sentiment, values=Number_sentiment['text'], names=Number_sentiment['sentiment'], color_discrete_sequence=px.colors.sequential.Emrld
     )
     fig2.write_image(file='static/piechart.jpg', format='jpg')
-    # fig2.show()
 
     def create_wordcloud(text):
-        # mask = np.array(Image.open('cloud.png'))
         
         wc = WordCloud(background_color='white',
-        # mask = mask,
         max_words=3000,
         stopwords=stop_words,
         repeat=True, width=1800, height=900)
@@ -249,5 +229,3 @@ def plot_sent(key_word,nbTweet):
 
     create_wordcloud(df['tweet'].values)
 
-
-# plot_sent('Macron2022','40')
