@@ -1,3 +1,15 @@
 .form-control {
     border: 2px solid rgb(46, 39, 39);
 }
+
+button {
+    text-align: center;
+    height:20px;
+    width:50px;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+    transition: 0.9s;
+}

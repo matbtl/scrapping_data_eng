@@ -63,17 +63,17 @@ def plot_rt():
     g = sns.catplot(
         data=df, kind="bar",
         x="_id", y="value", hue="variable",
-        ci="sd", palette="dark", alpha=.6, height=6
+        ci="sd", palette="dark", alpha=.6, height=9,
+        aspect=2/1
     )
     g.despine(left=True)
     g.set_axis_labels("", "total")
     g.legend.set_title("")
-    g.savefig("static/rt_like.jpg", dpi=100)
+    g.savefig("static/rt_like.jpg")
 
 
 
 # plot_rt()
-
 # for x in all_result :
 #     print('---------------------------------')
 #     print(x)
