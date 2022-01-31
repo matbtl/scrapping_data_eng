@@ -1,3 +1,4 @@
+import flask
 from flask import Flask, redirect, url_for, render_template, request
 from rt_like import plot_rt
 from search_hashtags import hashtags_df

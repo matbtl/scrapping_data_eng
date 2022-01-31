@@ -3,8 +3,17 @@
 Notre application porte sur le sujet des présidentielles 2022 et nous avons utilisé le site Twitter pour notre étude. Nous avons analysé les tweets des principaux candidats (likes et retweet), mais aussi les principaux sujets que l’on retrouve chez les utilisateurs de twitter et le sentiment que l’on perçoit dans un twitter (positif, négatif, neutre).
 
 #Lancement du projet :
+Lancer dans un terminal de commande : 
 
-Word Cloud
+pip install -r requirements.txt
+
+lancer un serveur mongod
+
+flask run
+
+Puis dirigez vous sur localhost:5000/
+Il faut aussi un compte twitter developpeur, dont les informations sont à stocker dans twitter_credentials.py. Des informations sont déja disponibles dans notre fichier.
+
 
 
 #Scrapping de donnée :
@@ -42,6 +51,6 @@ Accueil : Elle permet d’accéder aux différentes pages du site, chacune repr�
 
 Retweet et likes : Donne un graphique des 100 derniers tweets d’un candidat à l’élection présidentielle et donne la moyenne des likes et retweets.
 
-Hashtag : 
+Hashtag : Donne les tweets les plus retweeter parmis le hashtag et le nombre de tweet choisi.
 
 Sentiments : Il faut entrer un Hashtag et le nombre de tweets que l'on veut analyser, cela nous donne un pie chart et un barPlot sur la répartition des tweets positif, négatif ou neutre. Mais aussi un nuage de mots les plus représentés dans les tweets 
