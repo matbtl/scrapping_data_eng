@@ -68,12 +68,11 @@ def plot_rt():
     g.despine(left=True)
     g.set_axis_labels("", "total")
     g.legend.set_title("")
-
-    g.savefig("static/rt_like.jpg")
-
+    g.savefig("static/rt_like.jpg", dpi=100)
 
 
 
+# plot_rt()
 
 # for x in all_result :
 #     print('---------------------------------')

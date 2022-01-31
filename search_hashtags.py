@@ -79,4 +79,4 @@ def clean_tweet(self, tweets):
 
     return tweets
 
-print(db)
+print(db.head())

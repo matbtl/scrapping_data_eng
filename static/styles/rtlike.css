@@ -100,7 +100,7 @@
   
   #navbar li a:hover {
     /* border-bottom: 1px solid rgb(28, 121, 184); */
-    color: rgb(28, 121, 184);
+    color: rgb(11, 28, 39);
     transition: all 1s ease;
     -webkit-transition: all 1s ease;
   }
@@ -281,7 +281,7 @@
     ======================================================*/
   .overlay-menu {
     background: lightblue;
-    color: rgb(13, 26, 38);
+    color: rgb(10, 17, 24);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -323,9 +323,14 @@
   }
 
 #navbar {
-  background-color: black;
+  background-color: rgb(78, 70, 70);
 }
 
 .nav-item {
   color: white;
+}
+
+.img-div {
+  margin-left: auto;
+  margin-right: auto;
 }
