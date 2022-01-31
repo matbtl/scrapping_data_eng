@@ -37,7 +37,7 @@ def hashtags_df(word,nofTwit):
 
 
         tweets = tweepy.Cursor(api.search_tweets,
-                                words,
+                                q='{words}-filter:retweets'.format(words=words),
                                 tweet_mode='extended').items(nofTwit)
 
         list_tweets = [tweet for tweet in tweets]
@@ -67,7 +67,7 @@ def hashtags_df(word,nofTwit):
                                 retweetcount, text, hashtext]
                         
                         db.loc[len(db)] = ith_tweet
-                        
+        #db = db.drop_duplicates(subset='text', keep="first")
         return db.sort_values(by=['retweetcount'], ascending=False).head(nofTwit)
 
 # db = hashtags('Macron2022',30)

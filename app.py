@@ -23,7 +23,7 @@ from wtforms import Form, BooleanField, StringField, PasswordField, validators
 
 
 app = Flask(__name__)
-# plot_rt()
+plot_rt()
 # plot_sent()
 
 

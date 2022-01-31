@@ -5,6 +5,10 @@ tr {
     background-color: rgb(209, 193, 172);
 }
 
-.table__row:nth-child(even) {
-    background-color: aliceblue;
+tr:nth-child(even) {
+    background-color: rgb(240, 224, 204);
+}
+
+th {
+    text-align: left;
 }
