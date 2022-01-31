@@ -57,7 +57,7 @@ def sentiment():
         print(request.form.get("nbTweet"))
         # # nbTweet = '40'
         plot_sent(key_word, int(nbTweet))
-        return render_template('sentiment.html')
+        return redirect(url_for('sentiment'))
         # return render_template('sentiment.html', key_word=key_word, nbTweet=nbTweet)
         return render_template('sentiment.html')
     else:
