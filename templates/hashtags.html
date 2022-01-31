@@ -7,13 +7,13 @@
     <title>Twitter Scrapping</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/rtlike.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/sentiment.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/hashtags.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
   {% include 'nav.html' %}
 
   {% block content %}
-  {% endblock %}
       
       
       <!-- Menu Icon -->
@@ -33,11 +33,12 @@
             <h1 class="header col-md-4 col-lg-offset-4">Hashtags</h1>
             <br>
             <br>
-            <p class="header col-md-4 col-lg-offset-4">Vous pouvez chercher un hashtag sur twitter, il resortira les 10 tweets les plus liké sur le nombres de tweets choisi. Voici les principaux Hashtags des présidentielles pour facilité les recherches : #présidentielle2022, #Macron2022, #MelenchonPresident, #Zemmour. La limite de tweets que l'on peut scraper est de 2500.
+            <p class="header col-md-4 col-lg-offset-4">Vous pouvez chercher un hashtag sur twitter, il resortira les 10 tweets les plus retweetés sur le nombres de tweets choisi. Voici les principaux Hashtags des présidentielles pour facilité les recherches : #présidentielle2022, #Macron2022, #MelenchonPresident, #Zemmour. La limite de tweets que l'on peut scraper est de 2500.
               Pour actualiser la page faite ctrl F5.
             
               
             </p>
+            
             
             
             <p></p>
@@ -46,12 +47,27 @@
             <span class="input-group-text header col-md-4 col-lg-offset-4" id="">Mot clé :</span>
             <div class="input-group">
               <form method="post" action="/hashtags">
-                <input type="text" class="form-control header col-md-4 col-lg-offset-4" name="key_word">
-                <input type="number" class="form-control header col-md-4 col-lg-offset-4" name="nbTweet">
+                <input type="text" class="form-control header col-md-4 col-lg-offset-4" name="word">
+                <input type="number" class="form-control header col-md-4 col-lg-offset-4" name="nofTwit">
                 <button type="submit" name="submit_button" id="" value="Submit" class="form-control header col-md-4 col-lg-offset-4">Submit</button>
               </form>
             </div>
 
+            <table>
+                {% for table in tables %}
+                {{titles[loop.index]}}
+                <tr>
+                    {{ table|safe }}
+
+                </tr>
+                {% endfor %}
+
+            </table>
+            
+
+            
+
+            {% endblock %}
             
         </div>
     </div>

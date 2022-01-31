@@ -1,0 +1,10 @@
+
+
+
+tr {
+    background-color: rgb(209, 193, 172);
+}
+
+.table__row:nth-child(even) {
+    background-color: aliceblue;
+}

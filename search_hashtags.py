@@ -2,7 +2,7 @@ import tweepy
 import pandas as pd
 import re
 
-def hashtags(word,nofTwit):
+def hashtags_df(word,nofTwit):
         consumer_key ="O3tWUg2VwSo1YEeGYzNtd3fZw"
         consumer_secret ="aN1WgHgaIFxxNI9dULaO59gVVBhngoAP6lSn0oLTwWjNxMlyXi"
         access_token ="1486708069102936065-8bToI65WDWwErxQIlbTznyTuCSe96p"
@@ -68,13 +68,13 @@ def hashtags(word,nofTwit):
                         
                         db.loc[len(db)] = ith_tweet
                         
-        return db.sort_values(by=['retweetcount'], ascending=False).head(10)
+        return db.sort_values(by=['retweetcount'], ascending=False).head(nofTwit)
 
-db = hashtags('Macron2022',30)
+# db = hashtags('Macron2022',30)
 
 
 
-print(db)
+# print(db)
 # for i in final_db.iterrows():
 #         print('-----------------------------------------------------------')
 #         print(i)
