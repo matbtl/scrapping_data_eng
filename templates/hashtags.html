@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twitter Scrapping</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/rtlike.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/sentiment.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
@@ -37,6 +38,15 @@
             
             <p></p>
 
+
+            <span class="input-group-text header col-md-4 col-lg-offset-4" id="">Mot clé :</span>
+            <div class="input-group">
+              <form method="post" action="/hashtags">
+                <input type="text" class="form-control header col-md-4 col-lg-offset-4" name="key_word">
+                <input type="number" class="form-control header col-md-4 col-lg-offset-4" name="nbTweet">
+                <button type="submit" name="submit_button" id="" value="Submit" class="form-control header col-md-4 col-lg-offset-4">Submit</button>
+              </form>
+            </div>
 
             
         </div>

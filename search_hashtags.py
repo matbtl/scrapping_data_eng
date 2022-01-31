@@ -71,12 +71,5 @@ for tweet in list_tweets:
                 i = i+1
 
 
-def clean_tweet(self, tweets):
-    tweets = re.sub(r'@[A-Za-z0-9]+','',tweets) #supprime les mentions
-    tweets = re.sub(r'#','', tweets) # Supprime le symbole '#'
-    tweets = re.sub(r'RT[\s]+', '', tweets) # supprime "RT"
-    tweets = re.sub(r'https?:\/\/\S+' ,'', tweets) #supprime les liens 
-
-    return tweets
 
 print(db.head())

@@ -43,23 +43,22 @@ def rtlike():
 
 @app.route('/hashtags', methods=['GET', 'POST'])
 def hashtags():
-    return render_template('hashtags.html')
+    if request.method == "POST":
+        key_word = request.form.get("key_word")
+        nbTweet = request.form.get("nbTweet")
+        plot_sent(key_word, int(nbTweet))
+        return redirect(url_for('hashtags'))
+    else:
+        return render_template('hashtags.html')
 
 
 @app.route('/sentiments', methods=['GET', 'POST'])
 def sentiment():
     if request.method == "POST":
-        # print(request)
         key_word = request.form.get("key_word")
         nbTweet = request.form.get("nbTweet")
-        print(request.form)
-        print(request.form.get("key_word"))
-        print(request.form.get("nbTweet"))
-        # # nbTweet = '40'
         plot_sent(key_word, int(nbTweet))
         return redirect(url_for('sentiment'))
-        # return render_template('sentiment.html', key_word=key_word, nbTweet=nbTweet)
-        return render_template('sentiment.html')
     else:
         return render_template('sentiment.html')
 
