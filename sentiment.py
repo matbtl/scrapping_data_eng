@@ -239,7 +239,7 @@ def plot_sent(key_word,nbTweet):
         # mask = mask,
         max_words=3000,
         stopwords=stop_words,
-        repeat=True)
+        repeat=True, width=1800, height=900)
         wc.generate(str(text))
         wc.to_file('static/wc.png')
         print('Word Cloud Saved Successfully')

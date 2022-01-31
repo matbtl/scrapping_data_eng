@@ -13,3 +13,8 @@ button:hover{
     color: white;
     transition: 0.9s;
 }
+
+.img-div {
+    width: 100%;
+    max-width: 100%;
+  }
