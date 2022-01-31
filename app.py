@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, send_file, request
 from sympy import plot
 from rt_like import plot_rt
+from search_hashtags import hashtags
 from sentiment import plot_sent
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -46,7 +47,7 @@ def hashtags():
     if request.method == "POST":
         key_word = request.form.get("key_word")
         nbTweet = request.form.get("nbTweet")
-        plot_sent(key_word, int(nbTweet))
+        hashtags(key_word, int(nbTweet))
         return redirect(url_for('hashtags'))
     else:
         return render_template('hashtags.html')
