@@ -7,6 +7,18 @@ from matplotlib.figure import Figure
 import io
 from flask import Response
 import matplotlib.pyplot as plt
+from wtforms import Form, BooleanField, StringField, PasswordField, validators
+
+
+# class RegistrationForm(Form):
+#     username = StringField('Username', [validators.Length(min=4, max=25)])
+#     email = StringField('Email Address', [validators.Length(min=6, max=35)])
+#     password = PasswordField('New Password', [
+#         validators.DataRequired(),
+#         validators.EqualTo('confirm', message='Passwords must match')
+#     ])
+#     confirm = PasswordField('Repeat Password')
+#     accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
 
 
 app = Flask(__name__)
@@ -37,12 +49,17 @@ def hashtags():
 @app.route('/sentiments', methods=['GET', 'POST'])
 def sentiment():
     if request.method == "POST":
+        # print(request)
         key_word = request.form.get("key_word")
         nbTweet = request.form.get("nbTweet")
-        # nbTweet = '40'
-        plot_sent(f"{key_word} {nbTweet}")
+        print(request.form)
+        print(request.form.get("key_word"))
+        print(request.form.get("nbTweet"))
+        # # nbTweet = '40'
+        plot_sent(key_word, int(nbTweet))
+        return render_template('sentiment.html')
         # return render_template('sentiment.html', key_word=key_word, nbTweet=nbTweet)
-        return render_template('sentiment.html', key_word=key_word, nbTweet=nbTweet)
+        return render_template('sentiment.html')
     else:
         return render_template('sentiment.html')
 
