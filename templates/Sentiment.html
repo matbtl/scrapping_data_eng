@@ -33,21 +33,28 @@
         <div class="jumbotron">
             <h1 class="header col-md-4 col-lg-offset-4">Sentiment</h1>
             <br>
-            <p class="lead d-none d-md-block">Ici nous analysons si le tweet est : positif, négatif ou neutre selon un hashtag</p>
+            <p class="header col-md-4 col-lg-offset-4">Ici nous analysons si le tweet est : positif, négatif ou neutre selon un hashtag et le nombre de tweets voulu. L'analyse donne un pie chart de la répartion des tweets et un nuage de 
+              mots qui sont les plus représentés dans les tweets. Voici les principaux Hashtags des présidentielles pour facilité les recherches : #présidentielle2022, #Macron2022, #MelenchonPresident, #Zemmour. La limite de tweets que l'on peut scraper est de 2500.
+              
             
             
-            <p></p>
-
+            
+            </p>
+            <span class="input-group-text header col-md-4 col-lg-offset-4" id="">Mot clé et nombre de tweets</span>
             <div class="input-group">
               <form method="post" action="/sentiments">
-                <span class="input-group-text" id="">Mot clé et nombre de tweets</span>
-              </div>
-              <input type="text" class="form-control">
-              <input type="text" class="form-control">
-              <button type="submit" name="submit_button" id="" value="plot_sent" class="form-control">Submit</button>
+                <input type="text" class="form-control header col-md-4 col-lg-offset-4" name="key_word">
+                <input type="number" class="form-control header col-md-4 col-lg-offset-4" name="nbTweet">
+                <button type="submit" name="submit_button" id="" value="Submit" class="form-control header col-md-4 col-lg-offset-4">Submit</button>
               </form>
             </div>
-
+            
+            <div >
+              <img src="/static/barplot.jpg" alt="">
+              <img src="/static/piechart.jpg" alt="">
+              <img src="/static/wc.png" alt="">
+              
+            </div>
             
         </div>
     </div>

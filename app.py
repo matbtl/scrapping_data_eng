@@ -37,9 +37,11 @@ def hashtags():
 @app.route('/sentiments', methods=['GET', 'POST'])
 def sentiment():
     if request.method == "POST":
-        key_word = request.form.get("keyword")
+        key_word = request.form.get("key_word")
         nbTweet = request.form.get("nbTweet")
-        plot_sent(key_word,nbTweet)
+        # nbTweet = '40'
+        plot_sent(f"{key_word} {nbTweet}")
+        # return render_template('sentiment.html', key_word=key_word, nbTweet=nbTweet)
         return render_template('sentiment.html', key_word=key_word, nbTweet=nbTweet)
     else:
         return render_template('sentiment.html')

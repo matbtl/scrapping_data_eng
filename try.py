@@ -178,7 +178,8 @@ stop_words=[
 'être',
 'rt',
 'https',
-'de']
+'de',
+'co']
 
 deselect_stop_words = ['n\'', 'ne','pas','plus','personne','aucun','ni','aucune','rien']
 for w in deselect_stop_words:
@@ -219,12 +220,11 @@ fig.update_layout(
     bargap=0.2, 
     bargroupgap=0.1
 )
-fig.savefig("static/sents.jpg")
-# fig.show()
+fig.show()
 
-# fig2 = px.pie(Number_sentiment, values=Number_sentiment['text'], names=Number_sentiment['sentiment'], color_discrete_sequence=px.colors.sequential.Emrld
-# )
-# fig2.show()
+fig2 = px.pie(Number_sentiment, values=Number_sentiment['text'], names=Number_sentiment['sentiment'], color_discrete_sequence=px.colors.sequential.Emrld
+)
+fig2.show()
 
 def create_wordcloud(text):
     # mask = np.array(Image.open('cloud.png'))
@@ -235,11 +235,10 @@ def create_wordcloud(text):
     stopwords=stop_words,
     repeat=True)
     wc.generate(str(text))
-    wc.to_file('wc.png')
+    wc.to_file('static/wc.png')
     print('Word Cloud Saved Successfully')
-    path='wc.png'
+    path='static/wc.png'
     
     display(Image.open(path))
 
 create_wordcloud(df['tweet'].values)
-

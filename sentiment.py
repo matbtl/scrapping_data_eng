@@ -7,11 +7,17 @@ import numpy as np
 import os
 import nltk
 import pycountry
+import plotly.express as px
 import re
 import string
-
-#from wordcloud import WordCloud, STOPWORDS
+from IPython.display import display
+import textblob_fr
+from textblob import Blobber
+from textblob_fr import PatternTagger, PatternAnalyzer
 from PIL import Image
+tb = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
+
+from wordcloud import WordCloud
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from langdetect import detect
 from nltk.stem import SnowballStemmer
@@ -20,7 +26,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 def plot_sent(key_word,nbTweet):
     nltk.download('vader_lexicon')
-
     consumer_key ="O3tWUg2VwSo1YEeGYzNtd3fZw"
     consumer_secret ="aN1WgHgaIFxxNI9dULaO59gVVBhngoAP6lSn0oLTwWjNxMlyXi"
     access_token ="1486708069102936065-8bToI65WDWwErxQIlbTznyTuCSe96p"
@@ -30,81 +35,219 @@ def plot_sent(key_word,nbTweet):
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True)
 
-    # list = [
-    #     '#Macron2022',
-    #     '#Marine2022',
-    #     '#JLM2022',
-    #     '#Zemmour2022',
-    #     '#Pécresse2022',
-    #     '#JLM2022',
-    # ]
-
-    #Sentiment Analysis
-    def percentage(part,whole):
-        return 100 * float(part)/float(whole)
+    tweet_list = []
 
     keyword = key_word
     noOfTweet = nbTweet
     tweets = tweepy.Cursor(api.search_tweets, q=keyword).items(noOfTweet)
-    positive = 0
-    negative = 0
-    neutral = 0
-    polarity = 0
-    tweet_list = []
-    neutral_list = []
-    negative_list = []
-    positive_list = []
 
     for tweet in tweets:
-    #print(tweet.text)
         tweet_list.append(tweet.text)
-        analysis = TextBlob(tweet.text)
-        score = SentimentIntensityAnalyzer().polarity_scores(tweet.text)
-        neg = score['neg']
-        neu = score['neu']
-        pos = score['pos']
-        comp = score['compound']
-        polarity += analysis.sentiment.polarity
-    
-        if neg > pos:
-            negative_list.append(tweet.text)
-            negative += 1
-        elif pos > neg:
-            positive_list.append(tweet.text)
-            positive += 1
-    
-        elif pos == neg:
-            neutral_list.append(tweet.text)
-            neutral += 1
+
+    df = pd.DataFrame(tweet_list)
+    df.columns = ['text']
 
 
-    positive = percentage(positive, noOfTweet)
-    negative = percentage(negative, noOfTweet)
-    neutral = percentage(neutral, noOfTweet)
-    polarity = percentage(polarity, noOfTweet)
-    positive = format(positive, '.1f')
-    negative = format(negative, '.1f')
-    neutral = format(neutral, '.1f')
+    df['text']= df['text'].str.lower()
 
-    tweet_list.drop_duplicates(inplace = True)
+    clean_text=[]
+    for comment in df['text'].apply(str):
+        Word_Tok = []
+        for word in  re.sub("\W"," ",comment ).split():
+            Word_Tok.append(word)
+        clean_text.append(Word_Tok)
 
-    #Number of Tweets (Total, Positive, Negative, Neutral)
-    tweet_list = pd.DataFrame(tweet_list)
-    neutral_list = pd.DataFrame(neutral_list)
-    negative_list = pd.DataFrame(negative_list)
-    positive_list = pd.DataFrame(positive_list)
-    print('total number: ',len(tweet_list))
-    print('positive number: ',len(positive_list))
-    print('negative number: ', len(negative_list))
-    print('neutral number: ',len(neutral_list))
+    df["Word_Tok"]= clean_text
 
-    #PieCart
-    labels = ['Positive ['+str(positive)+'%]' , 'Neutral ['+str(neutral)+'%]','Negative ['+str(negative)+'%]']
-    sizes = [positive, neutral, negative]
-    colors = ['yellowgreen', 'blue','red']
-    patches, texts = plt.pie(sizes,colors=colors, startangle=90)
-    plt.style.use('default')
-    plt.legend(labels)
-    plt.title('Sentiment Analysis Result for keyword= '+keyword+'')
-    plt.axis('equal')
-    plt.savefig("static/sents.jpg")
+
+    stop_words=[
+    'alors',
+    'au',
+    'aucuns',
+    'aussi',
+    'autre',
+    'avant',
+    'avec',
+    'avoir',
+    'bon',
+    'car',
+    'ce',
+    'cela',
+    'ces',
+    'ceux',
+    'chaque',
+    'ci',
+    'comme',
+    'comment',
+    'dans',
+    'des',
+    'du',
+    'dedans',
+    'dehors',
+    'depuis',
+    'devrait',
+    'doit',
+    'donc',
+    'dos',
+    'début',
+    'elle',
+    'elles',
+    'en',
+    'encore',
+    'essai',
+    'est',
+    'et',
+    'eu',
+    'fait',
+    'faites',
+    'fois',
+    'font',
+    'hors',
+    'ici',
+    'il',
+    'ils',
+    'je',	
+    'juste',
+    'la',
+    'le',
+    'les',
+    'leur',
+    'là',
+    'ma',
+    'maintenant',
+    'mais',
+    'mes',
+    'mien',
+    'moins',
+    'mon',
+    'mot',
+    'même',
+    'ni',
+    'nommés',
+    'notre',
+    'nous',
+    'ou',
+    'où',
+    'par',
+    'parce',
+    'pas',
+    'peut',
+    'peu',
+    'plupart',
+    'pour',
+    'pourquoi',
+    'quand',
+    'que',
+    'quel',
+    'quelle',
+    'quelles',
+    'quels',
+    'qui',
+    'sa',
+    'sans',
+    'ses',
+    'seulement',
+    'si',
+    'sien',
+    'son',
+    'sont',
+    'sous',
+    'soyez',
+    'sujet',
+    'sur',
+    'ta',
+    'tandis',
+    'tellement',
+    'tels',
+    'tes',
+    'ton',
+    'tous',
+    'tout',
+    'trop',
+    'très',
+    'tu',
+    'voient',
+    'vont',
+    'votre',
+    'vous',
+    'vu',
+    'ça',
+    'étaient',
+    'état',
+    'étions',
+    'été',
+    'être',
+    'rt',
+    'https',
+    'de',
+    'co']
+
+    deselect_stop_words = ['n\'', 'ne','pas','plus','personne','aucun','ni','aucune','rien']
+    for w in deselect_stop_words:
+        if w in stop_words:
+            stop_words.remove(w)
+        else:
+            continue
+
+
+    result=[]
+    for comment in df["Word_Tok"]:
+        resultlist = [w for w in comment if not ((w in stop_words) or (len(w) == 1))]
+        result.append(' '.join(resultlist))
+
+    df["tweet"]=result
+    print(df.head())
+
+    senti_list = []
+    for i in df["tweet"]:
+        vs = tb(i).sentiment[0]
+        if (vs > 0):
+            senti_list.append('Positive')
+        elif (vs < 0):
+            senti_list.append('Negative')
+        else:
+            senti_list.append('Neutral') 
+
+    df["sentiment"]=senti_list
+    print(df)
+
+    #plot
+    Number_sentiment= df.groupby(["sentiment"])['text'].count().reset_index().reset_index(drop=True)
+    fig = px.histogram(df, x="sentiment",color="sentiment")
+    fig.update_layout(
+        title_text='Sentiment of reviews', # title of plot
+        xaxis_title_text='Sentiment', # xaxis label
+        yaxis_title_text='Count', # yaxis label
+        bargap=0.2, 
+        bargroupgap=0.1
+    )
+    fig.write_image(file='static/barplot.jpg', format='jpg')
+
+    # fig.show()
+
+
+
+    fig2 = px.pie(Number_sentiment, values=Number_sentiment['text'], names=Number_sentiment['sentiment'], color_discrete_sequence=px.colors.sequential.Emrld
+    )
+    fig2.write_image(file='static/piechart.jpg', format='jpg')
+    # fig2.show()
+
+    def create_wordcloud(text):
+        # mask = np.array(Image.open('cloud.png'))
+        
+        wc = WordCloud(background_color='white',
+        # mask = mask,
+        max_words=3000,
+        stopwords=stop_words,
+        repeat=True)
+        wc.generate(str(text))
+        wc.to_file('static/wc.png')
+        print('Word Cloud Saved Successfully')
+        path='static/wc.png'
+        
+        display(Image.open(path))
+
+    create_wordcloud(df['tweet'].values)
+
+
+# plot_sent('Macron2022','40')
